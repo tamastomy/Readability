@@ -1,0 +1,122 @@
+<%  %>
+    <% include ../partials/header %>
+        <div class="m-container">
+            <div class="container__left">
+                <div class="blog__container__left__image fullsize" style="background-image: url(<%=blog.mainimage%>)"></div>
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar" id="myBar"></div>
+            </div>
+            <div class="container__right position" onscroll="ScrollBarr()">
+
+                <div class="container__right__blog">
+
+<div class="blog__container__right__article-cover center-aligned">
+
+<span class="blog__container__right__topic"><%= blog.topic %></span>
+
+<h1 class="blog__container__right__title">
+    <%= blog.title %>
+</h1>
+
+<div class="blog__container__right__shortdescription__container">
+    <p class="blog__container__right__shortdescription">
+        <%=blog.shortdescription.substr(0,200)%>
+    </p>
+</div>
+<div class="blog__container__right__avatar__container">
+    <div class="blog__container__right__avatar">
+        <img src="<%=blog.author.imageurl%>" class="blog__container__right__avatar__image maxsize">
+    </div>
+    <h4 class="blog__container__right__avatar-name">
+        <%=blog.author.fullname%>
+    </h4>
+
+    <% if(currentUser && blog.author.id.equals(currentUser._id)){%>
+        <div style="display:flex">
+  <a class="ui inverted green button" href="/<%=blog.topic%>/<%= blog._id%>/edit">Edit</a>
+  <form action="/<%=blog.topic%>/<%=blog._id%>?_method=DELETE" method="POST">
+      <button class="ui inverted red button">Delete</button></form>
+        </div>
+        <%}%>
+</div>
+
+<div class="scrolldown center-aligned">
+Scroll Down
+    <i class="icon big chevron grey down"></i>
+</div>
+</div>
+
+<%  const keys=Object.keys(blog.blogcontent); const values=Object.values(blog.blogcontent);%>
+<% for(let i=0;i<Object.keys(blog.blogcontent).length;i++){ let key=keys[i]; let res=parseInt(key.slice(-1)); let resstring=res.toString(); %>
+    <% if(res === i+1 && key=="title"+resstring){ %>
+        <div class="blog__container__right__content-element">
+  <h2 class="blog__container__right__subtitlecontent">
+      <%= values[i] %>
+  </h2>
+</div>
+<% }else if(res==i+1 && key=="content"+resstring){%>
+  <div class="blog__container__right__content-element">
+      <p class="blog__container__right__textcontent first-letter">
+          <%= values[i] %>
+      </p>
+  </div>
+  <%}else if(res==i+1 && key=="image"+resstring){%>
+      <div class="blog__container__right__content-element">
+          <img src="<%=values[i]%>" class="blog__container__right__content-element__image">
+      </div>
+      <%}}%>
+
+  <div class="blog__container__right__content-element">
+<p class="blog__container__right__textcontent first-letter"></p>
+ </div>
+</div>
+<div class="blog__coments">
+<div class="ui comments">
+    <h1 class="ui diving header">Comments</h1>
+    <% blog.comments.forEach(function(comment){ %>
+        <div class="comment">
+            <a class="avatar">
+        <img src="<%=comment.author.imageurl%>" class="blog__container__right__avatar__image">
+    </a>
+            <div class="content">
+  <p class="author">
+      <%=comment.author.username%>
+  </p>
+  <div class="text">
+      <%=comment.text%>
+  </div>
+</div>
+  <% if(currentUser && comment.author.id.equals(currentUser._id)){%>
+    <div class="actions">
+<a class="white mini button basic ui" href="/<%=blog.topic%>/<%=blog._id%>/<%=comment._id%>/edit">Edit </a>
+<form action="/<%=blog.topic%>/<%=blog._id%>/<%=comment._id%>?_method=DELETE" method="post">
+<button class="white mini button basic ui" type="submit">Delete</button>
+    </form>
+    </div>
+    <%}%>
+    </div>
+    <%})%>
+   </div>
+   <% let comment=""; if(comment !== ""){%>
+       <form action="/<%=blog.topic%>/<%=blog.id%>/<%=comment._id%>?_method=PUT" method="post" class="ui reply form">
+           <h1>Write a comment:</h1>
+           <div class="field">
+               <textarea rows="6" cols="90" name="text" placeholder="Start typing here"><%=comment.text%></textarea></div>
+           <button class="ui yellow large submit icon button">Submit</button>
+       </form>
+       <%}else{%>
+
+           <form action="/<%=blog.topic%>/<%=blog.id%>" method="post" class="ui reply form">
+               <h1>Write a comment:</h1>
+               <div class="field">
+  <textarea rows="6" cols="90" name="text" placeholder="Start typing here"></textarea></div>
+    <button class="ui yellow large submit icon button">Submit</button>
+</form>
+<%}%>
+                </div>
+            </div>
+        </div>
+        </div>
+</div></body>
+<%include ../partials/footer %>

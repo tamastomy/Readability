@@ -1,0 +1,30 @@
+{
+  "name": "Blog",
+  "version": "1.0.0",
+  "description": "This is the package for my 2nd coursework Blog Website",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "author": "Thomas Torok",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "connect-flash": "^0.1.1",
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "express-session": "^1.15.6",
+    "gulp": "^3.9.1",
+    "method-override": "^2.3.10",
+    "mongoose": "^5.0.9",
+    "nodemon": "^1.17.2",
+    "package.json": "^2.0.1",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^5.0.0",
+    "request": "^2.85.0",
+    "semantic-ui": "^2.3.1",
+    "words-per-minute": "^1.1.2"
+  }
+}

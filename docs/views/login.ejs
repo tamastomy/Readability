@@ -1,0 +1,24 @@
+<% include ./partials/header %>
+    <div class="m-container">
+        <div class="container__left">
+            <div class="container__sign-up__image fullsize"><h1>Log in</h1></div>
+        </div>
+        <div class="container__right">
+            <div class="container__left__login center-aligned fullsize">
+            <form class="ui form m-form" action="/login" method="post">
+              <div class="field">
+               <label>Username</label>
+                <input type="text" name="username" placeholder="Username">
+                </div>
+                <div class="field">
+                <label>Password</label>
+                <input type="password" name="password" placeholder="Password">
+                </div>
+
+                <button class="ui button">Log in</button>
+            </form>
+            </div>
+        </div>
+    </div>
+</body>
+<%include ./partials/footer%>

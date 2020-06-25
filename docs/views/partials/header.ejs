@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Dawning+of+a+New+Day|Libre+Baskerville|Montserrat:400,700|Nunito+Sans:300,400" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/semantic-ui/dist/semantic.min.css">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="/semantic-ui/dist/semantic.min.js"></script>
+    <script src="/javascript/js.js"></script>
+    <title>Blog</title>
+</head>
+
+<body>
+       <body> <div class="preloader-wrapper fullsize">
+    <div class="preloader">
+        <img src="/preloader.svg" alt="NILA">
+    </div>
+</div>
+        <% if(page==undefined){var page="art";}%>
+
+        <header class="menu__container center-aligned">
+            <div class="ui text menu menu__container__left">
+
+    <a class="item" name="art" href="/art">Art</a>
+    <a class="item" name="travel" href="/travel">Travel</a>
+    <a class="item" name="technology" href="/technology">Technology</a>
+    <a class="item" name="music" href="/music">Music</a>
+    <a class="item" name="design" href="/design">Design</a>
+
+            </div>
+        </header>
+        <div class="menu__container__login">
+            <% if(!currentUser){ %>
+                <a  href="/login" class="ui  black mini  button">Log in</a>
+                <a href="/signup" class="ui black mini  button">Sign Up</a>
+                <%} else { %>
+                    <a href="/<%=page%>/new" class="ui black mini  button">Create</a>
+                     <a href="/logout" class="ui black mini  button">Log out</a>
+                    <%}%>
+        </div>

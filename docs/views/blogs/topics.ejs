@@ -1,0 +1,90 @@
+<% let page= "";%>
+    <% include ../partials/header %>
+
+
+        <div class="m-container">
+           <div class="ui dimmer">
+    <div class="ui loader"></div>
+  </div>
+            <div class="container__left">
+                <a href="<%= blogs[1].topic %>/<%= blogs[blogs.length-1]._id %>">
+                 <div class="progress-container darkgray"><div class="progress-bar" id="myBar"></div></div>
+                 <div class="blogs__left-div__image fullsize" style="background-image: url(<%= blogs[blogs.length-1].mainimage %>)"></div>
+<div class="blogs__left-div__image__text-content">
+    <h1>
+        <%= blogs[blogs.length-1].title %>
+    </h1>
+</div>
+                </a>
+                <%function hey(){blogs[0].split(' ').length}%>
+            </div>
+            <div class="container__right" onscroll="ScrollBarr()">
+                <div class="container__right__blogs position" onscroll="ScrollBarr()">
+                <div class="container__right__blogs__left"></div>
+<div class="container__right__blogs__right"></div>
+                </div>
+
+
+                <% for(let z=0; blogs.length > z; z++){ %>
+
+    <% if(blogs[z].x%2 !== 0){ %>
+
+        <div class="blogcont ui raised link card" data-value="<%= blogs[z].x %>">
+
+<a class="image" href="/<%=blogs[z].topic%>/<%= blogs[z]._id %>">
+<img src="<%= blogs[z].mainimage %>"></a>
+<div class="content">
+    <a href="/<%=blogs[z].topic%>/<%= blogs[z]._id %>" class="header">
+        <%=blogs[z].title%>
+    </a>
+    <div class="description">
+        <p>
+            <%= blogs[z].shortdescription.substr(0,100)%>
+        </p>
+    </div>
+    <div class="extra content">
+        <span>by <%=blogs[z].author.fullname%></span>
+        <span class="right floated"><%=Math.floor(JSON.stringify(blogs[z]).split(' ').length/130)%> min read</span>
+    </div>
+</div>
+
+        </div>
+
+     <%}%>
+
+
+        <% if(blogs[z].x%2 == 0){ %>
+
+        <div class="blogcont ui raised link card" data-value="<%= blogs[z].x %>">
+
+<a class="image" href="/<%=blogs[z].topic%>/<%= blogs[z]._id %>">
+<img src="<%= blogs[z].mainimage %>"></a>
+<div class="content">
+    <a href="/<%=blogs[z].topic%>/<%= blogs[z]._id %>" class="header">
+        <%=blogs[z].title%>
+    </a>
+    <div class="description">
+        <p>
+            <%= blogs[z].shortdescription.substr(0,100)%>
+        </p>
+    </div>
+    <div class="extra content">
+        <span>by <%=blogs[z].author.fullname%></span>
+        <span class="right floated"><%=Math.floor(JSON.stringify(blogs[z]).split(' ').length/130)%> min read</span>
+    </div>
+</div>
+
+       </div>
+
+           <%}%>
+         <% } %>
+
+
+
+
+
+
+            </div>
+        </div>
+<script>AddToContainer();</script>
+<%include ../partials/footer%>

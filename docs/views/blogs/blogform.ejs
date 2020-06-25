@@ -1,0 +1,111 @@
+<% include ../partials/header %>
+        <form id="form" class="ui form m-container" action="/<%=page%>" method="post">
+            <div class="container__left center-aligned">
+                <div class="container__left__login center-aligned">
+                    <div class=" ui form">
+                        <label>Topic:</label>
+                        <div class="ui form">
+                            <div class="field">
+                                <select name="topic"  class="ui dropdown">
+                        <option value="">Select Topic</option>
+                        <option value="art">Art</option>
+                        <option value="travel">Travel</option>
+                        <option value="technology">Technology</option>
+                        <option value="music">Music</option>
+                        <option value="design">Design</option>
+                    </select>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label>Main Title:</label>
+                            <input type="text" name="title" class="ui input" placeholder="Title">
+                        </div>
+                        <label>Main Image:</label>
+                        <input type="text" class="ui input" name="mainimage" placeholder="Image">
+                        <label>Short description:</label>
+                        <textarea rows="4" cols="50" name="shortdescription" placeholder="Write a short description"></textarea>
+                        <br><br>
+                        <a id="example" href="#" onclick="Modal()">How does it work?</a>
+                    </div>
+                </div>
+                <div class="ui large disabled modal">
+                     <i class="close icon"></i>
+                     <div class="image content">
+                        <div class="image">
+                         <img src="/howto.png" class="maxsize"></div>
+                     </div>
+                </div>
+            </div>
+            <div class="container__right forms">
+                <div class="container__left__form">
+                    <div id="form-container">
+                        <div id="context1" class="container__left__single-form" style="padding-top:15%;">
+                            <div class="ui top attached tabular menu one"> <a class="item" data-tab="image">Image</a> <a class="item" data-tab="subtitle">Subtitle</a> <a class="item active" data-tab="text">Text</a> </div>
+                            <div class="ui bottom attached tab segment" data-tab="image">
+                                <div class="ui form">
+                                    <div class="field">
+                                        <p>Add Image link</p> <input name="image1" class="ui input blogimage" type="text" placeholder="Image"></div>
+                                </div>
+                            </div>
+                            <div class="ui bottom attached tab segment" data-tab="subtitle">
+                                <div class="ui form">
+                                    <div class="field">
+                                        <p>Add Subtitle</p> <input name="title1" class="ui input subtitle" type="text" placeholder="Subtitle"></div>
+                                </div>
+                            </div>
+                            <div class="ui bottom attached active tab segment" data-tab="text">
+                                <div class="ui form">
+                                    <div class="field">
+                                        <p>Add text</p> <textarea rows="4" class="bodycontent" cols="50" name="content1" placeholder="Write text"></textarea></div>
+                                </div>
+                            </div>
+                        </div>
+                           <div id="context2" class="container__left__single-form">
+                            <div class="ui top attached tabular menu one"> <a class="item active" data-tab="image">Image</a> <a class="item" data-tab="subtitle">Subtitle</a> <a class="item" data-tab="text">Text</a> </div>
+                            <div class="ui bottom active attached tab segment" data-tab="image">
+                                <div class="ui form">
+                                    <div class="field">
+                                        <p>Add Image link</p> <input name="image2" class="ui input blogimage" type="text" placeholder="Image"></div>
+                                </div>
+                            </div>
+                            <div class="ui bottom attached tab segment" data-tab="subtitle">
+                                <div class="ui form">
+                                    <div class="field">
+                                        <p>Add Subtitle</p> <input name="title2" class="ui input subtitle" type="text" placeholder="Subtitle"></div>
+                                </div>
+                            </div>
+                            <div class="ui bottom attached tab segment" data-tab="text">
+                                <div class="ui form">
+                                    <div class="field">
+                                        <p>Add text</p> <textarea rows="4" class="bodycontent" cols="50" name="content2" placeholder="Write text"></textarea></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button value="submit" class="ui big black button">Submit</button>
+                </div>
+            </div>
+
+        </form>
+        <button onClick="addOne()" id="add-more" class="circular ui icon big orange button"><i class="plus black icon large" ></i></button>
+    </div>
+
+    </body>
+    <script>
+        addOne();
+        $('#multi-select')
+            .dropdown();
+        $('#context1 .menu .item').tab({
+            context: $('#context1')
+        });
+         $('#context2 .menu .item').tab({
+            context: $('#context2')
+        });
+       function Modal() {$('.ui.modal')
+  .modal({
+    blurring: true
+  })
+  .modal('show')
+;}
+    </script>
+<%include ../partials/footer%>
